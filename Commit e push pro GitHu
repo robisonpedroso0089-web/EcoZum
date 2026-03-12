@@ -1,0 +1,5 @@
+git add .
+git commit -m "ECOZUM desperta! Primeiro commit com monstro reciclado"
+git branch -M main
+git remote add origin https://github.com/robisonpedroso0089-web/EcoZum.git
+git push -u origin main
