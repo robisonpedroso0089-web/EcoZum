@@ -1,4 +1,14 @@
-# main.py - ECOZUM: O MONSTRO RECICLADO QUE SALVA O PLANETA
+
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+build/
+dist/
+*.egg-info/
+bin/# main.py - ECOZUM: O MONSTRO RECICLADO QUE SALVA O PLANETA
 # Crânio de lata rachada, olhos verdes flamejantes, braços de arame reciclado, garras podres de plástico, glitch eco-verde
 
 from kivy.app import App
