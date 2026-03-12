@@ -1,0 +1,157 @@
+# main.py - ECOZUM: O MONSTRO RECICLADO QUE SALVA O PLANETA
+# Crânio de lata rachada, olhos verdes flamejantes, braços de arame reciclado, garras podres de plástico, glitch eco-verde
+
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.graphics import Color, Ellipse, Line, Rectangle
+from kivy.clock import Clock
+from kivy.core.audio import SoundLoader
+import random
+
+class GrokzomborgWidget(Widget):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.evolucao = 0
+        self.rugidos = [
+            "ECO-ZUM! ROOOAAAR-ZIIIMB!",
+            "*bip bip* RECICLAGEM OVERRIDE!",
+            "01000101 01000011 01001111 01011010 01010101 01001101!",
+            "EU SOU O MONSTRO RECICLADO... WiFi 6E VERDE!"
+        ]
+
+        # Sons eco-apocalípticos (data/sounds/)
+        self.sons = [
+            SoundLoader.load('data/sounds/roar1.wav'),
+            SoundLoader.load('data/sounds/roar2.wav'),
+            SoundLoader.load('data/sounds/roar3.wav'),
+            SoundLoader.load('data/sounds/roar4.wav')
+        ]
+        for s in self.sons:
+            if s: s.volume = 1.0  # Sustentável, mas com impacto
+
+        # Fundo eco-punk reciclado (verde-escuro com textura de lixo)
+        with self.canvas.before:
+            Color(0.01, 0.12, 0.04, 1)
+            self.bg = Rectangle(pos=self.pos, size=self.size)
+
+        self.bind(size=self.atualizar_fundo, pos=self.atualizar_fundo)
+
+        self.x = self.width / 2
+        self.y = self.height / 2
+        self.vx = random.choice([-5, 5])
+        self.vy = random.choice([-5, 5])
+
+        self.desenhar()
+        Clock.schedule_interval(self.update, 1/60.0)
+
+    def atualizar_fundo(self, *args):
+        self.bg.pos = self.pos
+        self.bg.size = self.size
+
+    def desenhar(self):
+        self.canvas.clear()
+        with self.canvas:
+            # Corpo reciclado: lata rachada + tronco de plástico podre
+            cores = [(0,0.7,0.1), (0,0.9,0.2), (0.1,1,0.3), (0.2,1,0.5)]
+            Color(*cores[self.evolucao])
+
+            tam = 90 + self.evolucao * 45
+            Ellipse(pos=(self.x-tam/2, self.y-tam/2 + 10), size=(tam, tam*0.85))
+
+            # Rachaduras eco (linhas verdes neon)
+            Color(0, 1, 0.4, 0.8)
+            for _ in range(6):
+                Line(points=[
+                    self.x + random.randint(-tam//2, tam//2),
+                    self.y + random.randint(-tam//2 + 10, tam//2 + 10),
+                    self.x + random.randint(-tam//2, tam//2),
+                    self.y + random.randint(-tam//2 + 10, tam//2 + 10)
+                ], width=5)
+
+            # Olhos verdes flamejantes (eco-power)
+            Color(0, 1, 0.3, 1)
+            olho = 28 + self.evolucao * 10
+            Ellipse(pos=(self.x - olho - 15, self.y + 25), size=(olho, olho * 1.5))
+            Ellipse(pos=(self.x + 15, self.y + 25), size=(olho, olho * 1.5))
+
+            # Braços de arame reciclado
+            Color(0.4, 0.9, 0.5, 1)
+            Line(points=[self.x - tam//2, self.y, self.x - tam * 0.8, self.y - tam * 0.6], width=12)
+            Line(points=[self.x + tam//2, self.y, self.x + tam * 0.8, self.y - tam * 0.6], width=12)
+
+            # Garras de plástico podre
+            Color(0.1, 0.8, 0.2, 1)
+            for lado in [-1, 1]:
+                for i in range(3):
+                    Line(points=[
+                        self.x + lado * (tam * 0.8 + i*5),
+                        self.y - tam * 0.6 - i*8,
+                        self.x + lado * (tam * 0.8 + i*15),
+                        self.y - tam * 0.6 - i*20
+                    ], width=7)
+
+            # Fios reciclados pendurados
+            Color(0.2, 0.9, 0.4, 0.9)
+            for _ in range(6):
+                Line(points=[
+                    self.x + random.randint(-tam//3, tam//3),
+                    self.y + tam//2,
+                    self.x + random.randint(-tam//2, tam//2),
+                    self.y + tam//2 + random.randint(40, 110)
+                ], width=4)
+
+            # GLITCH ECO-VERDE constante
+            Color(0, 1, 0.3, random.uniform(0.4, 0.85))
+            for _ in range(25):
+                Line(points=[
+                    random.randint(0, self.width),
+                    random.randint(0, self.height),
+                    random.randint(0, self.width),
+                    random.randint(0, self.height)
+                ], width=random.randint(3, 8))
+
+    def update(self, dt):
+        self.x += self.vx
+        self.y += self.vy
+
+        if self.x < 100 or self.x > self.width - 100:
+            self.vx *= -1
+        if self.y < 100 or self.y > self.height - 180:
+            self.vy *= -1
+
+        self.desenhar()
+
+    def tocar_som(self):
+        som = self.sons[self.evolucao]
+        if som:
+            som.stop()
+            som.play()
+
+    def on_touch_down(self, touch):
+        self.x = touch.x
+        self.y = touch.y
+
+        self.evolucao = (self.evolucao + 1) % 4
+        self.tocar_som()
+
+        from kivy.uix.label import Label
+        msg = Label(text=self.rugidos[self.evolucao],
+                    font_size='45sp',
+                    color=(0,1,0.4,1),
+                    pos_hint={'center_x':0.5, 'top':1},
+                    size_hint_y=None, height=130)
+        self.add_widget(msg)
+        Clock.schedule_once(lambda dt: self.remove_widget(msg), 2.5)
+
+        return True
+
+
+class GrokzomborgApp(App):
+    def build(self):
+        self.title = "EcoZum - Grokzomborg"
+        self.icon = "data/icon.png"
+        return GrokzomborgWidget()
+
+
+if __name__ == '__main__':
+    GrokzomborgApp().run()
