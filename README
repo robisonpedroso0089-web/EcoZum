@@ -1,0 +1,7 @@
+# EcoZum
+O monstro reciclado que salva o planeta com zumbidos ecológicos  
+ROOOAAAR-ZIIIMB! 🌍🦖♻️
+
+## Como rodar
+pip install kivy
+python main.py
