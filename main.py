@@ -1,4 +1,19 @@
 
+# No on_touch_down, depois de evoluir:
+import subprocess
+
+def chamar_grok_js(self):
+    try:
+        result = subprocess.run(
+            ["node", "grokzomborg.js", f"pergunta_do_nivel_{self.evolucao}"],
+            capture_output=True, text=True
+        )
+        print("Grokzomborg JS rugiu:", result.stdout)
+    except:
+        print("Node não encontrado – roda o JS separado!")
+
+# Chama no on_touch_down:
+self.chamar_grok_js()
 # main.py - GROKZOMBORG: O MONSTRO QUE TU MOSTROU (crânio rachado, olhos vermelhos, braços podres)
 from kivy.app import App
 from kivy.uix.widget import Widget
