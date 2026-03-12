@@ -1,3 +1,32 @@
+Fundo verde-escuro reciclado (estilo EcoZum)
+with self.canvas.before:
+Color(0.01, 0.12, 0.04, 1)
+self.bg = Rectangle(pos=self.pos, size=self.size)
+self.bind(size=self.atualizar_fundo, pos=self.atualizar_fundo)
+self.x = self.width / 2
+self.y = self.height / 2
+self.vx = random.choice([-6, 6])
+self.vy = random.choice([-6, 6])
+self.desenhar()
+Clock.schedule_interval(self.update, 1/60.0)
+self.tocar_som()  # Rugido inicial de repositório vivo!
+def atualizar_fundo(self, *args):
+self.bg.pos = self.pos
+self.bg.size = self.size
+def desenhar(self):
+self.canvas.clear()
+with self.canvas:
+cores = [(0,0.8,0.1), (0,1,0.3), (0.1,0.9,0.4), (0.2,1,0.6)]
+Color(*cores[self.evolucao])
+tam = 120 + self.evolucao * 50  # Maior pra dominar a tela
+Ellipse(pos=(self.x-tam/2, self.y-tam/2), size=(tam, tam))
+Color(0, 1, 0.2, 1)
+olho = 30 + self.evolucao * 12
+Ellipse(pos=(self.x-olho-20, self.y+20), size=(olho, olho1.6))
+Ellipse(pos=(self.x+20, self.y+20), size=(olho, olho1.6))
+Color(0.3, 0.9, 0.4, 1)
+Line(points=[self.x+40, self.y-30, self.x+100, self.y-120],
+width=8 + self.evolucao*6, cap='round')
 if self.evolucao == 3:
 Color(0, 1, 0.3, random.uniform(0.4, 0.9))
 for _ in range(15):
