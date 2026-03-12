@@ -1,4 +1,27 @@
-# EcoZum
+
+
+
+
+import { Ollama } from 'ollama-js'
+
+const ollama = new Ollama({ host: 'http://localhost:11434' })
+
+// Chat simples
+const response = await ollama.chat({
+  model: 'llama3',
+  messages: [{ role: 'user', content: 'Por que o céu é azul?' }]
+})
+
+// Stream (resposta em tempo real)
+const stream = await ollama.chat({
+  model: 'mistral',
+  messages: [{ role: 'user', content: 'Conta uma história curta' }],
+  stream: true
+})
+
+for await (const part of stream) {
+  process.stdout.write(part.message.content)
+}# EcoZum
 O monstro reciclado que salva o planeta com zumbidos ecológicos  
 ROOOAAAR-ZIIIMB! 🌍🦖♻️
 
