@@ -1,3 +1,41 @@
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.graphics import Color, Ellipse, Line, Rectangle
+from kivy.clock import Clock
+from kivy.core.audio import SoundLoader
+import random
+class GrokzomborgWidget(Widget):
+def init(self, **kwargs):
+super().init(**kwargs)
+self.evolucao = 3  # COMEÇA NO NÍVEL MÁXIMO – ECOZUM JÁ NO AR!
+self.rugidos = [
+"ECOZUM DESPERTADO! ROOOAAAR-ZIIIMB!",
+"bip bip REPOSITÓRIO ATIVADO!",
+"01000101 01000011 01001111 01011010 01010101 01001101!",
+"EU SOU O MONSTRO DO ECOZUM... WiFi 6E VERDE!"
+]
+Sons eco-apocalípticos (data/sounds/)
+self.sons = [
+SoundLoader.load('data/sounds/roar1.wav'),
+SoundLoader.load('data/sounds/roar2.wav'),
+SoundLoader.load('data/sounds/roar3.wav'),
+SoundLoader.load('data/sounds/roar4.wav')
+]
+for s in self.sons:
+if s: s.volume = 1.2  # Alto pra ecoar no GitHub
+Fundo verde-escuro reciclado (estilo EcoZum)
+with self.canvas.before:
+Color(0.01, 0.12, 0.04, 1)
+self.bg = Rectangle(pos=self.pos, size=self.size)
+self.bind(size=self.atualizar_fundo, pos=self.atualizar_fundo)
+self.x = self.width / 2
+self.y = self.height / 2
+self.vx = random.choice([-6, 6])
+self.vy = random.choice([-6, 6])
+self.desenhar()
+Clock.schedule_interval(self.update, 1/60.0)
+self.tocar_som()  # Rugido inicial de repositório vivo!
+def atu
 Fundo verde-escuro reciclado (estilo EcoZum)
 with self.canvas.before:
 Color(0.01, 0.12, 0.04, 1)
