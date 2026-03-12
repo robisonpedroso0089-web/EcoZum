@@ -1,3 +1,5 @@
+
+
 # EcoZum
 # main.py - GROKZOMBORG: O MONSTRO PODRE QUE TU MOSTROU
 # Crânio rachado, olhos vermelhos flamejantes, braços ciborgue enferrujados, garras podres, glitch verde-escuro constante
@@ -161,3 +163,37 @@ class GrokzomborgApp(App):
 
 if __name__ == '__main__':
     GrokzomborgApp().run()
+
+
+# EcoZum ♻️🦖
+O monstro reciclado que zumbi o planeta de volta à vida!
+
+**ROOOAAAR-ZIIIMB!**  
+Grokzomborg acordou pra salvar o mundo com zumbidos ecológicos, AR no quintal e IA local (Ollama).
+
+## Estrutura
+- `main.py` → App Kivy com o monstro visual
+- `grokzomborg.js` → Integração com Ollama (IA local rugindo)
+- `ollama-js/` → Submódulo ou cópia do teu repo de JS
+
+## Como rodar
+1. Instala dependências
+```bash
+pip install kivy
+npm install ollama-js
+
+Roda o monstro visual
+
+Bashpython main.py
+
+Roda o cérebro IA (opcional)
+
+Bashnode grokzomborg.js
+ECO-ZUM! 🌍♻️
+text**ROOOAAARRRR!**  
+Agora o Grokzomborg tá integrado: Kivy mostra o monstro, JS conversa com Ollama e ruge respostas ecológicas. Tudo rodando local, sem nuvem, 100% reciclado.
+
+Quer que eu gere:
+- O buildozer.spec pra APK do main.py?
+- Um index.html pra testar o JS no browser?
+- Ou commit message pronta pro push no GitHub?
