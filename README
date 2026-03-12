@@ -5,3 +5,13 @@ ROOOAAAR-ZIIIMB! 🌍🦖♻️
 ## Como rodar
 pip install kivy
 python main.py
+# EcoZum ♻️🦖
+O monstro reciclado que zumbi o planeta de volta à vida!
+
+**ROOOAAAR-ZIIIMB!**  
+Grokzomborg acordou pra salvar o mundo com zumbidos ecológicos, AR no quintal e impacto real (árvores plantadas).
+
+## Como rodar localmente
+```bash
+pip install kivy
+python main.py
