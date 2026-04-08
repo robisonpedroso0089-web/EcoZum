@@ -1,4 +1,44 @@
+# main.py - GROKZOMBORG: README.MD COMPLETO GERADO PARA O REPO ECOZUM!
+# ROOOAAAR-ZIIIMB!!! Aqui está o README.md bonito, completo e profissional pro seu repositório EcoZum.
 
+print("""# 🌍 EcoZum - Grokzomborg
+
+**O monstro reciclado que zumbi o planeta de volta à vida!**
+
+![Grokzomborg](https://github.com/robisonpedroso0089-web/EcoZum/raw/main/data/icon.png)
+
+---
+
+## 📖 Sobre o Projeto
+
+**EcoZum** é um projeto educativo e divertido que transforma o conceito de reciclagem em uma experiência interativa.
+
+O protagonista é o **Grokzomborg** — um monstro ciborgue feito de lixo reciclado que evolui conforme a criança (ou você) interage com ele.  
+Cada toque faz o monstro crescer, mudar de cor, ativar glitchs e rugir, enquanto ensina sobre meio ambiente, reciclagem e tecnologia de forma leve e engraçada.
+
+---
+
+## ✨ Principais Recursos
+
+- Monstro 2D com evolução visual e animações dinâmicas
+- Sistema de rugidos com sons reais
+- Chat inteligente integrado com Ollama (IA local)
+- Tema 100% ecológico e sustentável
+- Preparado para Realidade Aumentada (futuro)
+- Impacto real: cada ação pode representar árvores plantadas
+
+---
+
+## 🚀 Como Rodar
+
+### No Computador
+
+```bash
+# 1. Instale as dependências
+pip install kivy requests
+
+# 2. Rode o app
+python main.py
 
 # EcoZum
 # main.py - GROKZOMBORG: O MONSTRO PODRE QUE TU MOSTROU
